@@ -1,16 +1,37 @@
-const {Octokit} = require('@octokit/rest')
-const {posix, sep} = require('path')
+const {posix, sep} = require('node:path')
+const {execSync} = require('node:child_process')
 
 if (!process.env.GITHUB_TOKEN) {
-  throw new Error('GITHUB_TOKEN env var is required to build CLI docs')
+  try {
+    // this allows people to run this locally
+    process.env.GITHUB_TOKEN = execSync('gh auth token', {encoding: 'utf8'}).trim()
+  } catch (err) {
+    throw new Error('GITHUB_TOKEN env var is required to build CLI docs')
+  }
 }
 
-const octokit = new Octokit({auth: process.env.GITHUB_TOKEN})
+let octokit
 const owner = 'npm'
 const repo = 'cli'
 const opts = {owner, repo}
 
+const getCurrentSha = async branch => {
+  if (!octokit) {
+    const {Octokit} = await import('@octokit/rest')
+    octokit = new Octokit({auth: process.env.GITHUB_TOKEN})
+  }
+  const {data} = await octokit.repos.getBranch({
+    ...opts,
+    branch,
+  })
+  return data.commit.sha
+}
+
 const getFile = async ({sha, ref, path}) => {
+  if (!octokit) {
+    const {Octokit} = await import('@octokit/rest')
+    octokit = new Octokit({auth: process.env.GITHUB_TOKEN})
+  }
   const {data} = await (sha
     ? octokit.git.getBlob({
         ...opts,
@@ -25,6 +46,10 @@ const getFile = async ({sha, ref, path}) => {
 }
 
 const pathExists = async (ref, path) => {
+  if (!octokit) {
+    const {Octokit} = await import('@octokit/rest')
+    octokit = new Octokit({auth: process.env.GITHUB_TOKEN})
+  }
   try {
     await octokit.repos.getContent({
       ...opts,
@@ -44,5 +69,6 @@ const pathExists = async (ref, path) => {
 module.exports = {
   getFile,
   pathExists,
+  getCurrentSha,
   nwo: `${owner}/${repo}`,
 }

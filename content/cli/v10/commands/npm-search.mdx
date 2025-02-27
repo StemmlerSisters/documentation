@@ -3,42 +3,26 @@ title: npm-search
 section: 1
 description: Search for packages
 github_repo: npm/cli
-github_branch: latest
+github_branch: release/v10
 github_path: docs/lib/content/commands/npm-search.md
 redirect_from:
-  - /cli-commands/npm-search
-  - /cli-commands/search
-  - /cli-documentation/cli-commands/npm-search
-  - /cli-documentation/cli-commands/search
-  - /cli-documentation/commands/npm-search
-  - /cli-documentation/commands/search
-  - /cli-documentation/npm-search
-  - /cli-documentation/search
   - /cli-documentation/v10/cli-commands/npm-search
   - /cli-documentation/v10/cli-commands/search
   - /cli-documentation/v10/commands/npm-search
   - /cli-documentation/v10/commands/search
   - /cli-documentation/v10/npm-search
   - /cli-documentation/v10/search
-  - /cli/cli-commands/npm-search
-  - /cli/cli-commands/search
-  - /cli/commands/npm-search
-  - /cli/commands/search
-  - /cli/npm-search
-  - /cli/search
   - /cli/v10/cli-commands/npm-search
   - /cli/v10/cli-commands/search
   - /cli/v10/commands/search
   - /cli/v10/npm-search
   - /cli/v10/search
-  - /commands/npm-search
-  - /commands/search
 ---
 
 ### Synopsis
 
 ```bash
-npm search [search terms ...]
+npm search <search term> [<search term> ...]
 
 aliases: find, s, se
 ```
@@ -56,13 +40,6 @@ Search also allows targeting of maintainers in search results, by prefixing thei
 If a term starts with `/`, then it's interpreted as a regular expression and supports standard JavaScript RegExp syntax. In this case search will ignore a trailing `/` . (Note you must escape or quote many regular expression characters in most shells.)
 
 ### Configuration
-
-#### `long`
-
-- Default: false
-- Type: Boolean
-
-Show extended information in `ls`, `search`, and `help-search`.
 
 #### `json`
 
@@ -95,6 +72,13 @@ Output parseable results from commands that write to standard output. For `npm s
 - Type: Boolean
 
 Show the description in `npm search`
+
+#### `searchlimit`
+
+- Default: 20
+- Type: Number
+
+Number of items to limit search results to. Will not apply at all to legacy searches.
 
 #### `searchopts`
 
