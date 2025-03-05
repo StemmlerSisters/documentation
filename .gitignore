@@ -3,11 +3,11 @@
 # ignore everything in the root
 /*
 
-# keep these
 !**/.gitignore
 !/.commitlintrc.js
 !/.eslintrc.js
 !/.eslintrc.local.*
+!/.git-blame-ignore-revs
 !/.github/
 !/.gitignore
 !/.npmrc
@@ -38,5 +38,8 @@
 !/static/
 !/tap-snapshots/
 !/test/
+!/tsconfig.json
 !/webpack.config.js
+!cli-cache.json
+tap-testdir*/
 !/cli/

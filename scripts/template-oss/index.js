@@ -1,17 +1,18 @@
 module.exports = {
   rootRepo: {
     add: {
-      '.github/workflows/ci.yml': 'ci.yml',
-      '.github/workflows/publish.yml': 'publish.yml',
+      '.github/workflows/ci.yml': 'ci-yml.hbs',
+      '.github/workflows/publish.yml': 'publish-yml.hbs',
       '.github/CODEOWNERS': false,
       '.github/ISSUE_TEMPLATE/bug.yml': false,
       '.commitlintrc.js': false,
       '.github/settings.yml': false,
+      '.github/dependabot.yml': 'dependabot-yml.hbs',
     },
   },
   rootModule: {
     add: {
-      'package.json': {file: 'pkg.json', overwrite: false},
+      'package.json': {file: 'package-json.hbs', overwrite: false},
       '.eslintrc.js': false,
       'CODE_OF_CONDUCT.md': false,
       'CONTRIBUTING.md': false,
@@ -20,6 +21,7 @@ module.exports = {
   workspaceRepo: {
     add: {
       '.github/settings.yml': false,
+      '.github/dependabot.yml': false,
     },
   },
   workspaceModule: {
@@ -28,7 +30,7 @@ module.exports = {
     },
   },
   ciVersions: 'latest',
-  latestCiVersion: 18,
+  latestCiVersion: 22,
   macCI: false,
   windowsCI: false,
   lockfile: true,

@@ -3,22 +3,14 @@ title: npx
 section: 1
 description: Run a command from a local or remote npm package
 github_repo: npm/cli
-github_branch: latest
+github_branch: release/v10
 github_path: docs/lib/content/commands/npx.md
 redirect_from:
-  - /cli-commands/npx
-  - /cli-documentation/cli-commands/npx
-  - /cli-documentation/commands/npx
-  - /cli-documentation/npx
   - /cli-documentation/v10/cli-commands/npx
   - /cli-documentation/v10/commands/npx
   - /cli-documentation/v10/npx
-  - /cli/cli-commands/npx
-  - /cli/commands/npx
-  - /cli/npx
   - /cli/v10/cli-commands/npx
   - /cli/v10/npx
-  - /commands/npx
 ---
 
 ### Synopsis
@@ -121,7 +113,7 @@ This resulted in some shifts in its functionality:
 - The `-p` argument is a shorthand for `--parseable` in npm, but shorthand for `--package` in npx. This is maintained, but only for the `npx` executable.
 - The `--ignore-existing` option is removed. Locally installed bins are always present in the executed process `PATH`.
 - The `--npm` option is removed. `npx` will always use the `npm` it ships with.
-- The `--node-arg` and `-n` options are removed.
+- The `--node-arg` and `-n` options have been removed. Use [`NODE_OPTIONS`](https://nodejs.org/api/cli.html#node_optionsoptions) instead: e.g., `NODE_OPTIONS="--trace-warnings --trace-exit" npx foo --random=true`
 - The `--always-spawn` option is redundant, and thus removed.
 - The `--shell` option is replaced with `--script-shell`, but maintained in the `npx` executable for backwards compatibility.
 

@@ -1,5 +1,7 @@
 import React from 'react'
-import {Box, Octicon, Avatar, Text, Tooltip} from '@primer/react'
+import {Box, Avatar, Text} from '@primer/react'
+import {Octicon} from '@primer/react/deprecated'
+import {Tooltip} from '@primer/react/next'
 import {PencilIcon} from '@primer/octicons-react'
 import Link from './link'
 import usePage from '../hooks/use-page'
@@ -35,7 +37,7 @@ const Contributors = ({contributors = [], latestCommit}) => {
           {contributors.length} {pluralize('contributor', contributors.length)}
         </Text>
         {contributors.map(login => (
-          <Tooltip key={login} aria-label={login}>
+          <Tooltip key={login} text={login}>
             <Link href={`https://github.com/${login}`} sx={{lineHeight: 'condensedUltra', mr: 2}}>
               <Avatar src={`https://github.com/${login}.png?size=40`} alt={login} />
             </Link>
@@ -43,7 +45,7 @@ const Contributors = ({contributors = [], latestCommit}) => {
         ))}
       </Box>
       {latestCommit ? (
-        <Text sx={{fontSize: 1, color: 'fg.muted', mt: 1}}>
+        <Text sx={{fontSize: 1, mt: 1}}>
           Last edited by <Link href={`https://github.com/${latestCommit.login}`}>{latestCommit.login}</Link> on{' '}
           <Link href={latestCommit.url}>{format(new Date(latestCommit.date))}</Link>
         </Text>

@@ -3,28 +3,16 @@ title: package-lock.json
 section: 5
 description: A manifestation of the manifest
 github_repo: npm/cli
-github_branch: latest
+github_branch: release/v10
 github_path: docs/lib/content/configuring-npm/package-lock-json.md
 redirect_from:
-  - /cli-documentation/configuring-npm/package-lock-json
-  - /cli-documentation/configuring-npm/package-lock.json
-  - /cli-documentation/files/package-lock-json
-  - /cli-documentation/files/package-lock.json
   - /cli-documentation/v10/configuring-npm/package-lock-json
   - /cli-documentation/v10/configuring-npm/package-lock.json
   - /cli-documentation/v10/files/package-lock-json
   - /cli-documentation/v10/files/package-lock.json
-  - /cli/configuring-npm/package-lock-json
-  - /cli/configuring-npm/package-lock.json
-  - /cli/files/package-lock-json
-  - /cli/files/package-lock.json
   - /cli/v10/configuring-npm/package-lock.json
   - /cli/v10/files/package-lock-json
   - /cli/v10/files/package-lock.json
-  - /configuring-npm/package-lock-json
-  - /configuring-npm/package-lock.json
-  - /files/package-lock-json
-  - /files/package-lock.json
 ---
 
 ### Description
@@ -42,6 +30,8 @@ This file is intended to be committed into source repositories, and serves vario
 - Optimize the installation process by allowing npm to skip repeated metadata resolutions for previously-installed packages.
 
 - As of npm v7, lockfiles include enough information to gain a complete picture of the package tree, reducing the need to read `package.json` files, and allowing for significant performance improvements.
+
+When `npm` creates or updates `package-lock.json`, it will infer line endings and indentation from `package.json` so that the formatting of both files matches.
 
 ### `package-lock.json` vs `npm-shrinkwrap.json`
 

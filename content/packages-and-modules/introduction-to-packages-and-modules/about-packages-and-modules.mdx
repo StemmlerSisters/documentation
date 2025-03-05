@@ -39,6 +39,8 @@ Git URLs used for npm packages can be formatted in the following ways:
 
 The `commit-ish` can be any tag, sha, or branch that can be supplied as an argument to `git checkout`. The default `commit-ish` is `HEAD`.
 
+Installing any package directly from git will not install [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) or workspaces.
+
 ## About modules
 
 A **module** is any file or directory in the `node_modules` directory that can be loaded by the Node.js `require()` function.
@@ -56,9 +58,11 @@ To be loaded by the Node.js `require()` function, a module must be one of the fo
 
 In the context of a Node program, the `module` is also the thing that was loaded _from_ a file. For example, in the following program:
 
-    var req = require('request')
+```
+var req = require('request')
+```
 
-we might say that "The variable `req` refers to the `request` module".
+The `req` variable refers to the `request` module returned by the `require()` function.
 
 [about-scopes]: about-scopes
 [private-pkgs]: about-private-packages

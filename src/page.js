@@ -4,7 +4,8 @@ import {createGlobalStyle} from 'styled-components'
 import Slugger from 'github-slugger'
 import Header from './components/header'
 import Sidebar from './components/sidebar'
-import {SkipLink} from './components/skip-nav'
+import {SkipBox, SkipLink} from './components/skip-nav'
+import {SKIP_TO_CONTENT_ID, SKIP_TO_SEARCH_ID} from './constants'
 
 import {PageProvider} from './hooks/use-page'
 import Layout from './layout'
@@ -27,11 +28,14 @@ const PageElement = ({element, props}) => {
   return (
     <BaseStyles>
       <GlobalStyles />
-      <SkipLink />
+      <SkipBox>
+        <SkipLink href={`#${SKIP_TO_SEARCH_ID}`}>Skip to search</SkipLink>
+        <SkipLink href={`#${SKIP_TO_CONTENT_ID}`}>Skip to content</SkipLink>
+      </SkipBox>
       <PageProvider value={page}>
         <Box sx={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
           <Header />
-          <Box sx={{zIndex: 0, display: 'flex', flex: '1 1 auto', flexDirection: 'row'}} role="main">
+          <Box sx={{zIndex: 0, display: 'flex', flex: '1 1 auto', flexDirection: 'row'}}>
             <Box sx={{display: ['none', null, null, 'block']}}>
               <Sidebar />
             </Box>

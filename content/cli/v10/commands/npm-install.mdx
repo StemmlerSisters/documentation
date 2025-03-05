@@ -3,36 +3,20 @@ title: npm-install
 section: 1
 description: Install a package
 github_repo: npm/cli
-github_branch: latest
+github_branch: release/v10
 github_path: docs/lib/content/commands/npm-install.md
 redirect_from:
-  - /cli-commands/install
-  - /cli-commands/npm-install
-  - /cli-documentation/cli-commands/install
-  - /cli-documentation/cli-commands/npm-install
-  - /cli-documentation/commands/install
-  - /cli-documentation/commands/npm-install
-  - /cli-documentation/install
-  - /cli-documentation/npm-install
   - /cli-documentation/v10/cli-commands/install
   - /cli-documentation/v10/cli-commands/npm-install
   - /cli-documentation/v10/commands/install
   - /cli-documentation/v10/commands/npm-install
   - /cli-documentation/v10/install
   - /cli-documentation/v10/npm-install
-  - /cli/cli-commands/install
-  - /cli/cli-commands/npm-install
-  - /cli/commands/install
-  - /cli/commands/npm-install
-  - /cli/install
-  - /cli/npm-install
   - /cli/v10/cli-commands/install
   - /cli/v10/cli-commands/npm-install
   - /cli/v10/commands/install
   - /cli/v10/install
   - /cli/v10/npm-install
-  - /commands/install
-  - /commands/npm-install
 ---
 
 ### Synopsis
@@ -134,6 +118,8 @@ Even if you never publish your package, you can still get a lot of benefits of u
 
   - `-D, --save-dev`: Package will appear in your `devDependencies`.
 
+  - `--save-peer`: Package will appear in your `peerDependencies`.
+
   - `-O, --save-optional`: Package will appear in your `optionalDependencies`.
 
   - `--no-save`: Prevents saving to `dependencies`.
@@ -161,8 +147,6 @@ Even if you never publish your package, you can still get a lot of benefits of u
   npm install readable-stream --save-exact
   npm install ansi-regex --save-bundle
   ```
-
-  **Note**: If there is a file or folder named `<name>` in the current working directory, then it will try to install that, and only try to fetch the package by name if it is not valid.
 
 - `npm install <alias>@npm:<name>`:
 
@@ -446,7 +430,7 @@ For `list` this means the output will be based on the tree described by the `pac
 
 #### `foreground-scripts`
 
-- Default: false
+- Default: `false` unless when using `npm pack` or `npm publish` where it defaults to `true`
 - Type: Boolean
 
 Run all build scripts (ie, `preinstall`, `install`, and `postinstall`) scripts for installed packages in the foreground process, sharing standard input, output, and error with the main npm process.
@@ -507,6 +491,13 @@ Override CPU architecture of native modules to install. Acceptable values are sa
 - Type: null or String
 
 Override OS of native modules to install. Acceptable values are same as `os` field of package.json, which comes from `process.platform`.
+
+#### `libc`
+
+- Default: null
+- Type: null or String
+
+Override libc of native modules to install. Acceptable values are same as `libc` field of package.json
 
 #### `workspace`
 
