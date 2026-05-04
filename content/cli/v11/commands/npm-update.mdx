@@ -40,7 +40,7 @@ redirect_from:
 ```bash
 npm update [<pkg>...]
 
-aliases: up, upgrade, udpate
+aliases: u, up, upgrade, udpate
 ```
 
 ### Description
@@ -292,6 +292,8 @@ If set, npm will build the npm tree such that only versions that were available 
 This flag is a complement to `before`, which accepts an exact date instead of a relative number of days.
 
 This config cannot be used with: `before`
+
+This value is not exported to the environment for child processes.
 
 #### `bin-links`
 
